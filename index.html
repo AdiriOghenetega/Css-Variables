@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Variables</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div>
+        <h1>Updating Css Variables using <span class="hl">JS</span></h1>
+    </div>
+    <label for="space">Spacing:</label>
+    <input type="range" max = "20" min="0" name="space" value="10" data-sizing="px">
+    <label for="blur">Blur:</label>
+    <input type="range" max = "20" min="0" name="blur" value="10" data-sizing="px">
+    <label for="base">base color:</label>
+    <input type="color" name="base" value="#14ce5b">
+    <p id="demo"></p>
+    <div>
+        <img src="./sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" alt="" height="400px" width="600px">
+    </div>
+<script>
+    function myControls(){
+        const suffix = this.dataset.sizing || " " ;
+        document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix);
+
+    }
+    const controls = document.querySelectorAll("input");
+    controls.forEach(input=> input.addEventListener("change",myControls));
+    controls.forEach(input=> input.addEventListener("mousemove",myControls));
+</script>
+</body>
+</html>
